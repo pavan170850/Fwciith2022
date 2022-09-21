@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}NOR Gate:}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Arduino:}{1}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Components}{1}{section.2}%
+\contentsline {section}{\numberline {3}Circuit Diagram}{1}{section.3}%
+\contentsline {paragraph}{Evaluation of Output Y :}{1}{section.3}%
+\contentsline {section}{\numberline {4}Truth Table}{1}{section.4}%
+\contentsline {section}{\numberline {5}K-map}{2}{section.5}%
+\contentsline {paragraph}{Karnugh Map for Y:}{2}{section.5}%
+\contentsline {section}{\numberline {6}Implementation}{2}{section.6}%
