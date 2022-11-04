@@ -1,0 +1,346 @@
+\def\mytitle{ BOOLEAN LOGIC IN VAMAN ESP}
+\def\myauthor{K.Pavan Kumar}
+\def\contact{r170850@rguktrkv.ac.in}
+\def\mymodule{Future Wireless Communication (FWC)}
+\documentclass[10pt, a4paper]{article}
+\usepackage[a4paper,outer=1.5cm,inner=1.5cm,top=1.75cm,bottom=1.5cm]{geometry}
+\twocolumn
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+\usepackage[colorlinks,linkcolor={black},citecolor={blue!80!black},urlcolor={blue!80!black}]{hyperref}
+\usepackage[parfill]{parskip}
+\usepackage{lmodern}
+\usepackage{tikz}
+%\documentclass[tikz, border=2mm]{standalone}
+\usepackage{karnaugh-map}
+%\documentclass{article}
+\usepackage{tabularx}
+\usepackage{circuitikz}
+\usetikzlibrary{calc}
+\usepackage{enumitem}
+\date{}
+\renewcommand*\familydefault{\sfdefault}
+\usepackage{watermark}
+\usepackage{lipsum}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{titlesec}
+       \usepackage[latin1]{inputenc}
+       \usepackage{color}
+       \usepackage{array}
+       \usepackage{longtable}
+       \usepackage{calc}
+       \usepackage{multirow}
+       \usepackage{hhline}
+       \usepackage{ifthen}
+
+
+
+\lstset{
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+
+\def\ifundefined#1{\expandafter\ifx\csname#1\endcsname\relax}
+\ifundefined{inputGnumericTable}
+\def\gnumericTableEnd{\end{document}}
+\else
+   \def\gnumericTableEnd{}
+\fi
+\providecommand{\gnumericmathit}[1]{#1} 
+\providecommand{\gnumericPB}[1]%
+{\let\gnumericTemp=\\#1\let\\=\gnumericTemp\hspace{0pt}}
+ \ifundefined{gnumericTableWidthDefined}
+        \newlength{\gnumericTableWidth}
+        \newlength{\gnumericTableWidthComplete}
+        \newlength{\gnumericMultiRowLength}
+        \global\def\gnumericTableWidthDefined{}
+ \fi
+ \ifthenelse{\isundefined{\languageshorthands}}{}{\languageshorthands{english}}
+\providecommand\gnumbox{\makebox[0pt]}
+\setlength{\bigstrutjot}{\jot}
+\setlength{\extrarowheight}{\doublerulesep}
+\setlongtables
+
+\setlength\gnumericTableWidth{%
+	98pt+%
+	118pt+%
+0pt}
+\def\gumericNumCols{2}
+\setlength\gnumericTableWidthComplete{\gnumericTableWidth+%
+         \tabcolsep*\gumericNumCols*2+\arrayrulewidth*\gumericNumCols}
+\ifthenelse{\lengthtest{\gnumericTableWidthComplete > \linewidth}}%
+         {\def\gnumericScale{1*\ratio{\linewidth-%
+                        \tabcolsep*\gumericNumCols*2-%
+                        \arrayrulewidth*\gumericNumCols}%
+{\gnumericTableWidth}}}%
+{\def\gnumericScale{1}}
+
+\ifthenelse{\isundefined{\gnumericColA}}{\newlength{\gnumericColA}}{}\settowidth{\gnumericColA}{\begin{tabular}{@{}p{98pt*\gnumericScale}@{}}x\end{tabular}}
+\ifthenelse{\isundefined{\gnumericColB}}{\newlength{\gnumericColB}}{}\settowidth{\gnumericColB}{\begin{tabular}{@{}p{118pt*\gnumericScale}@{}}x\end{tabular}}
+
+\thiswatermark{\centering \put(0,-110.0){\includegraphics[scale=0.3]{logo.png}} }
+\title{\mytitle}
+\author{\myauthor\hspace{1em}\\\contact\\FWC22011\hspace{6.5em}IITH\hspace{0.5em}\mymodule\hspace{6em}ASSIGNMENT}
+\begin{document}
+	\maketitle
+  \tableofcontents
+  \begin{abstract}
+      This manual explains logic Circuit for the following Boolean Expression using only NOR Gates  :
+      
+      \begin{center}
+      (A+B).(C+D)
+      \end{center}
+
+  \end{abstract}
+\section{Introduction}
+  \begin{tabularx}{0.4\textwidth} { 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X | }
+\hline
+ \textbf{A}& \textbf{B} & \textbf{Y}\\
+\hline
+0 & 0 & 1 \\  
+\hline
+0&1&0 \\ 
+\hline
+1&0&0\\
+\hline
+1&1&0\\
+\hline
+\end{tabularx}
+\begin{center}
+Truth Table for NOR Gate
+\end{center}
+
+    \subsection{NOR Gate:}
+Use  two input NOR Gate.The Logic symbol and truth table for  NOR gate is shown above.In the truth table above A,B are inputs and Y is the output.
+
+
+  \section{Components}
+  \begin{tabularx}{0.4\textwidth} { 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X | }
+\hline
+ \textbf{Component}& \textbf{Values} & \textbf{Quantity}\\
+\hline
+VAMAN Board &  & 1 \\  
+\hline
+JumperWires& M-F & 15 \\ 
+\hline
+USB-UART &  & 1 \\
+\hline
+Breadboard &  & 1 \\
+\hline
+USB-B Cable &  & 1 \\
+\hline
+\end{tabularx}
+
+\section{Circuit Diagram}
+\begin{circuitikz} \draw
+
+(0,2) node[nor port]  (mynor1) {}
+(0,0) node[nor port] (mynor2) {}
+(2,1) node[nor port] (mynor) {}
+(mynor1.out) -- (mynor.in 1)
+(mynor2.out) -- (mynor.in 2);
+
+\node[left] at (mynor1.in 1) {\(A\)};
+\node[left] at (mynor1.in 2) {\(B\)};
+
+\node[left] at (mynor2.in 1) {\(C\)};
+\node[left] at (mynor2.in 2) {\(D\)};
+\node[right] at (mynor1.out) {\((A+B)'\)};
+\node[right] at (mynor2.out) {\((C+D)'\)};
+
+\node[right] at (mynor.out) {\(Y=(A+B).(C+D)\)};
+\end{circuitikz}
+
+\begin{center}
+Figure.a
+\end{center}
+\paragraph{Evaluation of Output  Y :}
+In Digital Electronics the De Morgan's Laws are :
+\\First Law: (AB)' = A'+B'.
+\\Second Law: (A+B)' = A'.B'.
+\\The output Y=((A+B)'+(C+D)')'
+\\ =((A+B)')'.((C+D)')'     (From De Morgan's Second Law)
+\\ =(A+B).(C+D)             since ((A)')'=A
+
+
+\section{Truth Table}
+  \begin{tabularx}{0.46\textwidth} { 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X | }
+
+
+\hline
+ D & C & B & A  & Y\\
+\hline
+0 & 0 & 0 & 0 & 0 \\  
+\hline
+0 & 0 & 0 & 1 & 0 \\ 
+\hline
+0 & 0 & 1 & 0 & 0 \\
+\hline
+0 & 0 & 1 & 1 & 0 \\
+\hline
+0 & 1 & 0 & 0 & 0 \\  
+\hline
+0 & 1 & 0 & 1 & 1\\ 
+\hline
+0 & 1 & 1 & 0 & 1 \\
+\hline
+0 & 1 & 1 & 1 & 1 \\
+\hline
+1 & 0 & 0 & 0 & 0 \\
+\hline
+1 & 0 & 0 & 1 & 1 \\
+\hline
+1 & 0 & 1 & 0 & 1 \\
+\hline
+1 & 0 & 1 & 1 & 1 \\
+\hline
+1 & 1 & 0 & 0 & 0 \\
+\hline
+1 & 1 & 0 & 1 & 1 \\
+\hline
+1 & 1 & 1 & 0 & 1 \\
+\hline
+1 & 1 & 1 & 1 & 1 \\
+\hline
+\end{tabularx}
+\begin{center}
+TABLE 1
+\end{center}
+\begin{center}
+
+\section{K-map}
+     \begin{karnaugh-map}[4][4][1][$BA$][$DC$]
+        \minterms{5,6,7,9,10,11,13,14,15}
+        \maxterms{0,1,2,3,4,8,12}
+        \implicant{5}{15}
+        \implicant{7}{14}
+        \implicant{13}{11}
+        \implicant{15}{10}
+    \end{karnaugh-map}
+\end{center}
+\begin{center}
+Figure.b
+\end{center}
+    \paragraph{Karnugh Map for Y:}
+ 
+Draw k-map for  the truth table shown in Table 1 .The Given expression  (A+B).(C+D) is obtained by  using the K-map in Fig.b 
+The implicants in boxes 5,7,13,15 result in "AC" ,the implicants in boxes 9,11,13,15 result in "AD",the implicants in boxes 6,11,14,15 result in "BC",the implicants in boxes 10,11,14,15 result in "BD",
+\\The output is expressed in terms of inputs D,C,B,A as: 
+\\Y=AC+BC+AD+BD
+\\ =C(A+B)+D(A+B)
+\\ =(A+B).(C+D)\\
+2,4,5,10 GPIO Pins of Vaman Board are configured as input pins and the required Logic for A,B,C,D are drawn from 5V (Digital '1'),GND (Digital '0'). Built in led will glow based on Y satisfying the Table-1
+\subsection{The steps for implementation:}
+\begin{enumerate}
+\item Connect the USB-UART pins to the Vaman ESP32 pins according to Table 
+
+\begin{tabular}[c]{%
+	b{\gnumericColA}%
+	b{\gnumericColB}%
+	}
+\hhline{|-|-}
+	 \multicolumn{1}{|p{\gnumericColA}|}%
+	{\gnumericPB{\centering}\gnumbox{{\color[rgb]{0.79,0.13,0.12} VAMAN LC PINS}}}
+	&\multicolumn{1}{p{\gnumericColB}|}%
+	{\gnumericPB{\centering}\gnumbox{{\color[rgb]{0.79,0.13,0.12} UART PINS}}}
+\\
+\hhline{|--|}
+	 \multicolumn{1}{|p{\gnumericColA}|}%
+	{\gnumericPB{\centering}\gnumbox{GND}}
+	&\multicolumn{1}{p{\gnumericColB}|}%
+	{\gnumericPB{\centering}\gnumbox{GND}}
+\\
+\hhline{|--|}
+	 \multicolumn{1}{|p{\gnumericColA}|}%
+	{\gnumericPB{\centering}\gnumbox{ENB}}
+	&\multicolumn{1}{p{\gnumericColB}|}%
+	{\gnumericPB{\centering}\gnumbox{ENB}}
+\\
+\hhline{|--|}
+	 \multicolumn{1}{|p{\gnumericColA}|}%
+	{\gnumericPB{\centering}\gnumbox{TXD0}}
+	&\multicolumn{1}{p{\gnumericColB}|}%
+	{\gnumericPB{\centering}\gnumbox{RXD}}
+\\
+\hhline{|--|}
+	 \multicolumn{1}{|p{\gnumericColA}|}%
+	{\gnumericPB{\centering}\gnumbox{RXD0}}
+	&\multicolumn{1}{p{\gnumericColB}|}%
+	{\gnumericPB{\centering}\gnumbox{TXD}}
+\\
+\hhline{|--|}
+	 \multicolumn{1}{|p{\gnumericColA}|}%
+	{\gnumericPB{\centering}\gnumbox{0}}
+	&\multicolumn{1}{p{\gnumericColB}|}%
+	{\gnumericPB{\centering}\gnumbox{IO0}}
+\\
+\hhline{|--|}
+	 \multicolumn{1}{|p{\gnumericColA}|}%
+	{\gnumericPB{\centering}\gnumbox{5V}}
+	&\multicolumn{1}{p{\gnumericColB}|}%
+	{\gnumericPB{\centering}\gnumbox{5V}}
+\\
+\hhline{|-|-|}
+\end{tabular}
+ \item Flash the following setup code through USB-UART using laptop
+\begin{center}
+\fbox{\parbox{8cm}{\url{https://github.com/pavan170850/Fwciith2022/blob/main/iot/codes/setup/src/main.cpp}}}
+\end{center}
+\begin{center}
+\end{center}
+\begin{lstlisting}
+svn co https://github.com/pavan170850/Fwciith2022/trunk/iot/codes/setup
+cd  setup
+pio run
+pio run -t upload
+\end{lstlisting}
+
+after entering your wifi username and password (in quotes below)
+\begin{lstlisting}
+#define STASSID "..." // Add your network credentials
+#define STAPSK  "..."
+\end{lstlisting}
+in src/main.cpp file
+\item You can notice that vaman will be connnected to the network credentials provided above.Connect your laptop to the same network ,You should be able to find the ip address of your vaman-esp on laptop using 
+\begin{lstlisting}
+ifconfig
+nmap -sn 192.168.6.1/24
+\end{lstlisting}
+where your computer's ip address is the output of ifconfig and given by 192.168.6.x
+\item Login to termux-ubuntu on the android device and execute the following commands:
+\begin{lstlisting}
+proot-distro login debian
+cd  /data/data/com.termux/files/home/
+mkdir iot
+svn co https://github.com/pavan170850/Fwciith2022/trunk/iot/codes/ota
+cd codes/ota
+\end{lstlisting}
+\item Assuming that the username is jeevan and password is jeevan12345, flash the following code wirelessly
+\begin{center}
+\fbox{\parbox{8cm}{\url{https://github.com/pavan170850/Fwciith2022/blob/main/iot/codes/ota/src/main.cpp}}}
+\end{center}
+through 
+\begin{lstlisting}
+pio run 
+pio run -t nobuild -t upload --upload-port ip_addres_of_esp
+\end{lstlisting}
+where you may replace the above ip address with the ip address of your vaman-esp.
+\end{enumerate}
+\end{document}
+
+
+
